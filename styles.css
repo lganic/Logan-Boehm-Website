@@ -1,0 +1,40 @@
+* { box-sizing: border-box; }
+
+/* force scrollbar */
+html { overflow-y: scroll; }
+
+body { font-family: sans-serif; }
+
+/* ---- grid ---- */
+
+.grid {
+  background: #DDD;
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: 33.333%;
+}
+
+.grid-item {
+  float: left;
+  border-radius: 10px;
+  background-color: aquamarine;
+  width: calc(33.33% - 20px); /* For a 3-column layout with 10px margin */
+  margin: 10px;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+  border-radius: 10px 10px 0px 0px; 
+}
