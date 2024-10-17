@@ -51,7 +51,6 @@ a {
   z-index: 2; /* Ensure the title is above the description */
 }
 
-/* Description overlay that slides in from the left */
 .description-overlay {
   position: absolute;
   top: 0;
@@ -61,6 +60,7 @@ a {
   background: rgba(0, 0, 0, 0.7); /* Slightly more opaque */
   color: white;
   display: flex;
+  flex-direction: column; /* Stack items vertically */
   align-items: center;
   justify-content: center;
   padding: 20px;
@@ -69,6 +69,7 @@ a {
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Inner shadow for blending */
   z-index: 3; /* Ensure the description is above the title */
 }
+
 
 /* Hover Effects */
 .image-container:hover .description-overlay {
