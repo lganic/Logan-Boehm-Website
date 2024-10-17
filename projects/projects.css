@@ -9,3 +9,9 @@ body {
 footer {
 	margin: 50px 0;
 }
+
+svg {
+    border-radius: 15px;
+    background-color: lightgray;
+    margin-right: 10px;
+}
