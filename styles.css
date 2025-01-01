@@ -8,11 +8,20 @@ a {
   width: 33.333%;
 }
 
+body{
+  background-color: black;
+}
+
+h1{
+  color: white;
+  text-align: center;
+}
+
 /* Style for the grid item */
 .grid-item {
   float: left;
   border-radius: 10px;
-  background-color: aquamarine;
+  background-color: rgb(39, 43, 42);
   width: calc(33.33% - 20px);
   margin: 10px;
 }
