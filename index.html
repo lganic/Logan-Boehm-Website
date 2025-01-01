@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placeholder Page</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        #placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #placeholder h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="background"></canvas>
+    <div id="placeholder">
+        <h1>Coming Soon</h1>
+        <p>Hello! I'm still working on this</p>
+        <p>Check back soon!</p>
+        <p>Or check out my <a href="portfolio.html">portfolio</a></p>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('background');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        const image = new Image();
+        image.src = 'DVD_logo.png';
+
+        image.onerror = () => {
+            console.error('Failed to load the image.');
+        };
+
+        const imgWidth = 340;
+        const imgHeight = 150;
+
+        let x = Math.random() * (width - imgWidth);
+        let y = Math.random() * (height - imgHeight);
+        let dx = 2;
+        let dy = 2;
+
+        function draw() {
+            ctx.fillStyle = '#f0f0f0'; // Add a background color
+            ctx.fillRect(0, 0, width, height);
+            ctx.drawImage(image, x, y, imgWidth, imgHeight);
+
+            x += dx;
+            y += dy;
+
+            if (x + imgWidth > width || x < 0) dx = -dx;
+            if (y + imgHeight > height || y < 0) dy = -dy;
+
+            requestAnimationFrame(draw);
+        }
+
+        image.onload = () => draw();
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+
+</html>
