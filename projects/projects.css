@@ -17,19 +17,26 @@ svg {
 }
 
 .centered-media img {
-    display: block;
-    margin: 0 auto;
-    width: 30%;
-    border: 2px solid #000;
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+  border: 2px solid #000;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 
 
-  .centered-media video {
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
+.centered-media video {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.proj-image img{
+  max-width: 25vw;
+  max-height: 50vw;
+  margin-left: auto;
+  margin-right: auto;
+}
