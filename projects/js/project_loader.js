@@ -54,6 +54,10 @@ function populateProject(data) {
     if (projectText && data.projectText) {
         projectText.innerHTML = data.projectText;
     }
+
+    if (data.tags){
+        data.tags.forEach((tag) => addTagElement(tag));
+    }
 }
 
 // Main function to load the project data
