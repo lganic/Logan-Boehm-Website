@@ -13,7 +13,7 @@ function addTagElement(tag) {
 
     // Convert hash to HSB and generate a color
     function hashToHSBColor(tagHash) {
-        const hue = tagHash % 256; // Hue value between 0-255
+        const hue = tagHash % 360; // Hue value between 0-360
         const saturation = 100; // Full saturation
         const brightness = 100; // Full brightness
         return { hue, saturation, brightness };
