@@ -55,8 +55,15 @@ function populateProject(data) {
         projectText.innerHTML = data.projectText;
     }
 
+    // Add tags
     if (data.tags){
         data.tags.forEach((tag) => addTagElement(tag));
+    }
+
+    // Add github link (if it exists)
+    const githubDiv = document.getElementById('github-link');
+    if (githubDiv && data.githubLink){
+        githubDiv.innerHTML = `<a href="${data.githubLink}" target="_blank"><img style="width:80%" src="https://img.shields.io/badge/GitHub-Source Code Here-blue?style=social&logo=github" alt="GitHub link">`
     }
 }
 
