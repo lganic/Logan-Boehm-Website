@@ -48,10 +48,6 @@ function addTagElement(tag) {
         return brightness > 128 ? '#000' : '#fff';
     }
 
-    function toTitleCase(str) {
-        return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
-    }
-
     // Create the tag element with the appropriate color
     const tagHash = hashString(tag.toLowerCase().replace(" ", ""));
     const { hue, saturation, brightness } = hashToHSBColor(tagHash);
@@ -60,7 +56,7 @@ function addTagElement(tag) {
     const textColor = chooseTextColor(bgColorRgb);
 
     const tagElement = document.createElement('span');
-    tagElement.textContent = toTitleCase(tag);
+    tagElement.textContent = tag;
     tagElement.style.backgroundColor = `rgb(${bgColorRgb.join(",")})`;
     tagElement.style.color = textColor;
     tagElement.style.padding = '5px 10px';
