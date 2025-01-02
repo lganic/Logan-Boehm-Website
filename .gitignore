@@ -1,3 +1,4 @@
 projects/*.json
 test.html
 temp.html
+.vscode/*
