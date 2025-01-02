@@ -19,12 +19,23 @@ svg {
 .centered-media img {
   display: block;
   margin: 0 auto;
-  width: 30%;
+  width: 50%;
   border: 2px solid #000;
   margin-top: 40px;
   margin-bottom: 40px;
+  border-radius: 15px;
 }
 
+.centered-media embed{
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  border: 2px solid #000;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-radius: 15px;
+  height: 85vh;
+}
 
 .centered-media video {
   display: block;
@@ -39,4 +50,9 @@ svg {
   max-height: 50vw;
   margin-left: auto;
   margin-right: auto;
+}
+
+body img{
+  max-width:100%;
+  height:auto;
 }
