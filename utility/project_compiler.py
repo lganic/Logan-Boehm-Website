@@ -54,6 +54,8 @@ def attach_optional_field(text, object, field):
 
 def migrate(file_path: str, s3_wrapper: S3Wrapper, project_name: str, to_remote = False):
 
+    print('Migrating:', file_path, 'to', ['local', 'remote'][to_remote])
+
     if not os.path.exists(file_path):
         print(f'Warning: File does not exist: {file_path}')
         return
@@ -124,9 +126,11 @@ class LinkCompiler:
         (If selected for cloud, this function does do the uploading)'''
 
 
-        while CONTENT_FLAG_STRING.lower() in input_string.lower():
+        while CONTENT_FLAG_STRING in input_string:
 
-            path = parse_block(input_string, CONTENT_FLAG_STRING, '\n').replace('"', '')
+            parsed = parse_block(input_string, CONTENT_FLAG_STRING, '\n')
+
+            path = parsed.replace('"', '')
 
             file_type = os.path.basename(path).partition('.')[2].lower()
 
@@ -137,7 +141,14 @@ class LinkCompiler:
 
             processed_file = self.HREF_KEYS[file_type].replace(self.itext, new_path, 1)
 
-            input_string = input_string.replace('\n\n' + CONTENT_FLAG_STRING + path + '\n\n', processed_file, 1)
+            if not CONTENT_FLAG_STRING + parsed in input_string:
+                print(CONTENT_FLAG_STRING + parsed)
+
+                print(input_string)
+
+                raise LookupError('Could not forward compile string')
+
+            input_string = input_string.replace(CONTENT_FLAG_STRING + parsed, processed_file, 1)
         
         return input_string
         
