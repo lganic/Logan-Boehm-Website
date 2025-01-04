@@ -35,6 +35,8 @@ function populateProject(data) {
     const projectImage = document.getElementById('project-image');
     if (projectImage && data.projectImage) {
         projectImage.innerHTML = data.projectImage;
+        projectImage.children[0].id = 'img-id';
+        projectImage.children[0].classList.add('proj-image');
     }
 
     // Update project description
@@ -90,7 +92,63 @@ async function loadProject() {
     } catch (error) {
         console.error("Error loading the project JSON file:", error);
     }
+
+    adjustImageHeight();
 }
 
 // Execute the main function after the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', loadProject);
+
+function adjustImageHeight() {
+
+    const img = document.getElementById('img-id'); 
+
+    if (img){
+        img.onload = function () {
+            const div = document.getElementById('description-div');
+            const img_holder = document.getElementById('project-image');
+        
+            if (!(div && img && img_holder)) {
+                return;
+            }
+        
+            const regular_width = img.naturalWidth;
+            const regular_height = img.naturalHeight;
+        
+            // Attempt to fit heightwise
+            let calc_width = div.offsetHeight * regular_width / regular_height;
+        
+            if (calc_width < img_holder.offsetWidth){
+                // Itll fit!
+                img.style.height = `${div.offsetHeight}px`;
+                img.style.width = `${calc_width}px`;
+
+                missing_width = img_holder.offsetWidth - calc_width;
+
+                img.style.marginLeft = `${missing_width / 2}px`;
+
+                return;
+            }
+
+            // Fit Widthwise
+
+            let calc_height = img_holder.offsetWidth * regular_height / regular_width;
+
+            img.style.width = `${img_holder.offsetWidth}px`;
+            img.style.height = `${calc_height}px`;
+
+            missing_height = div.offsetHeight - calc_height;
+
+            img.style.marginTop = `${missing_height / 2}px`;
+        }
+
+        // If the image is already loaded (e.g., cached), trigger the function immediately
+        if (img.complete) {
+            img.onload();
+        }
+    }
+
+}
+
+// Trigger on window resize
+window.onresize = adjustImageHeight;
