@@ -2,3 +2,7 @@ projects/*.json
 test.html
 temp.html
 .vscode/*
+projects/temp/*
+projects/proj.html
+utility/__pycache__/*
+backups/*
