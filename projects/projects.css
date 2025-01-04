@@ -16,7 +16,8 @@ svg {
     margin-right: 10px;
 }
 
-.centered-media img {
+.centered-media img, 
+.centered-media video {
   display: block;
   margin: 0 auto;
   width: 50%;
@@ -24,6 +25,13 @@ svg {
   margin-top: 40px;
   margin-bottom: 40px;
   border-radius: 15px;
+}
+
+@media (max-width: 768px) { /* Adjust the max-width value as needed */
+  .centered-media img, 
+  .centered-media video {
+    width: 90%;
+  }
 }
 
 .centered-media embed{
@@ -37,13 +45,6 @@ svg {
   height: 85vh;
 }
 
-.centered-media video {
-  display: block;
-  margin: 0 auto;
-  width: 50%;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
 
 /* .proj-image{ */
   /* max-width: 25vw; */
