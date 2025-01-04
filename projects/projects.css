@@ -45,14 +45,14 @@ svg {
   margin-bottom: 40px;
 }
 
-.proj-image{
+/* .proj-image{ */
   /* max-width: 25vw; */
-  max-height: 50vw;
+  /* max-height: 50vw; */
   /* margin: auto;
   width: 80px; */
   /* margin-left: auto;
   margin-right: auto; */
-}
+/* } */
 
 body img{
   max-width:100%;

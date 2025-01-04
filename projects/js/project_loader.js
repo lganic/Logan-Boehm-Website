@@ -36,7 +36,7 @@ function populateProject(data) {
     if (projectImage && data.projectImage) {
         projectImage.innerHTML = data.projectImage;
         projectImage.children[0].id = 'img-id';
-        projectImage.children[0].classList.add('proj-image');
+        // projectImage.children[0].classList.add('proj-image');
     }
 
     // Update project description
