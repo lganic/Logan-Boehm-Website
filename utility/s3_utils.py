@@ -78,6 +78,10 @@ class S3Wrapper:
 
         s3_key = s3_key.replace('\\', '/') # s3 why you do this???
 
+        end_location = os.path.dirname(local_path)
+
+        os.makedirs(end_location, exist_ok = True)
+
         try:
             self.s3_client.download_file(self.bucket_name, s3_key, local_path)
             print(f"File '{s3_key}' downloaded to '{local_path}' successfully.")
