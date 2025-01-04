@@ -102,7 +102,7 @@ function addProjectToGrid(container, data) {
 
     const titleOverlay = document.createElement('div');
     titleOverlay.className = 'title-overlay';
-    titleOverlay.innerHTML = `<h2>${data.projectLongTitle}</h2>`;
+    titleOverlay.innerHTML = `<h2>${data.projectShortTitle}</h2>`;
 
     const descriptionOverlay = document.createElement('div');
     descriptionOverlay.className = 'description-overlay';
