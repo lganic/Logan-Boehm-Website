@@ -159,7 +159,8 @@ class MainWindow(QWidget):
 
     def refresh_webpage(self):
 
-        shutil.rmtree('../projects/temp') # Remove old files
+        if os.path.exists('../projects/temp'):
+            shutil.rmtree('../projects/temp') # Remove old files
 
         compile(p_hand.link_compiler, self.filepath, self.short_title_input.text(), self.long_title_input.text(), self.selected_image_path, self.description_input.toPlainText(), self.get_techs(), self.qhtml_file, self.get_tags(), self.github_input.text(), self.href_input.text())
 
