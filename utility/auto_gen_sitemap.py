@@ -20,4 +20,4 @@ def create_sitemap(directory, output_file="sitemap.xml"):
     tree.write(os.path.join(directory, output_file), encoding="utf-8", xml_declaration=True)
 
 if __name__ == "__main__":
-    create_sitemap("..")  # Adjust to your website's build/output directory
+    create_sitemap(".")  # Adjust to your website's build/output directory
