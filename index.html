@@ -53,9 +53,25 @@
             font-size: 3em;
         }
 
+        svg,
+        p {
+            display: inline-block;
+
+            font-size: 20px;
+        }
+
         @media (max-width: 600px) {
             .centered-content h1 {
                 font-size: 1.5em;
+            }
+            .centered-content h2 {
+                font-size: .75em;
+            }
+            .centered-content h3 {
+                font-size: .5em;
+            }
+            .centered-content p, svg {
+                font-size: 10px;
             }
         }
 
@@ -70,13 +86,6 @@
             position: absolute;
             transform: translate(-50%, -50%);
 
-        }
-
-        svg,
-        p {
-            display: inline-block;
-
-            font-size: 20px;
         }
 
         p {
@@ -149,7 +158,6 @@
         <br>
     </div>
 
-    <!-- Ensure you have the SimplexNoise library correctly referenced -->
     <script src="js/mod-simplex.js"></script>
     <script>
         const canvas = document.getElementById('noiseCanvas');
