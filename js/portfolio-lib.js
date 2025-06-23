@@ -89,7 +89,7 @@ function addProjectToGrid(container, data) {
       projectElement.href = data['forceHref'];
     }
     else{
-      projectElement.href = data['jsonname'].replace('/', '/project.html?project=');
+      projectElement.href = data['jsonname'].replace('/', '/project?project=');
     }
 
     const gridItem = document.createElement('div');
