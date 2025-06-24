@@ -81,3 +81,7 @@ svg {
   background-color: #9b9b9b;
   color: white;
 }
+
+#project-image img{
+  border-radius: 20px;
+}
