@@ -37,7 +37,7 @@ class MainWindow(QWidget):
             self.object_title += '.json'
 
         self.filepath = f'../projects/{object_title}'
-        self.webpath = f'http://localhost:8000/projects/project?project={object_title}&local=1'
+        self.webpath = f'http://localhost:8000/projects/project.html?project={object_title}&local=1'
 
         self.selected_image_path = None
 
@@ -324,7 +324,10 @@ if __name__ == "__main__":
         with open(f'../projects/{name}') as json_file:
             contents = json.load(json_file)
 
-        contents['projectImage'] = p_hand.link_compiler.reverse_compile_image(contents['projectImage'])
+        if contents['projectImage'] != '<img src="None">':
+            contents['projectImage'] = p_hand.link_compiler.reverse_compile_image(contents['projectImage'])
+        else:
+            print("Warning! Project image seemingly got corrupted during the last upload!")
     
         with open(f'../projects/{name}', 'w') as json_file:
             json.dump(contents, json_file)
