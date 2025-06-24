@@ -39,8 +39,14 @@ class S3Wrapper:
 
         s3_key = s3_key.replace('\\', '/') # s3 why you do this???
 
+        extra_args = {}
+        if file_path.lower().endswith('.pdf'):
+            extra_args = {
+                'ContentType': 'application/pdf',
+            }
+
         try:
-            self.s3_client.upload_file(file_path, self.bucket_name, s3_key)
+            self.s3_client.upload_file(file_path, self.bucket_name, s3_key, ExtraArgs=extra_args)
             print(f"File '{file_path}' uploaded to '{s3_key}' successfully.")
 
             return os.path.join(f'https://{self.bucket_name}.s3.{self.region}.amazonaws.com/', s3_key).replace('\\', '/')
