@@ -222,7 +222,7 @@ def compile(link_compiler: LinkCompiler, project_json_path: str, short_title: st
 
         compiled_text = link_compiler.compile_forward(file_content, ref_name, cloud = not local)
 
-        minified_html = htmlmin.minify(compiled_text, remove_empty_space=True)
+        minified_html = htmlmin.minify(compiled_text, remove_empty_space=True, remove_optional_attribute_quotes=False)
 
         digest['projectText'] = minified_html
 
