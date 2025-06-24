@@ -68,6 +68,9 @@ def quasi_find(string: str, substring: str, base_location = 0):
     Return -1 if not found
     '''
 
+    if len(substring) == 1:
+        return string.find(substring, base_location + 1)
+
     for index in range(base_location, len(string) - len(substring) + 1):
 
         if quasi_equal_at_location(string, index, substring):
