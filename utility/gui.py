@@ -3,6 +3,11 @@ import os
 import json
 import shutil
 import time
+import threading
+import http.server
+import socketserver
+import time
+from functools import partial
 from typing import List
 from PyQt5.QtWidgets import QApplication, QVBoxLayout, QWidget, QHBoxLayout, QLabel, QLineEdit, QPushButton, QTextEdit, QFileDialog
 from PyQt5.QtWebEngineWidgets import QWebEngineView
@@ -15,6 +20,7 @@ from project_handler import ProjectHandler, ensure_proj_formatting
 p_hand = ProjectHandler()
 
 QHTML_LOCATION = '../projects/proj.html'
+PORT = 8000
 
 def get_image_link(img_html: str):
     img_html = img_html.replace('"', "'").replace(' ', '')
@@ -26,6 +32,19 @@ def get_image_link(img_html: str):
     b = img_html.find("'", a + 1)
 
     return img_html[a: b]
+
+def start_server():
+    # Create a handler that serves from the parent directory
+    handler = partial(http.server.SimpleHTTPRequestHandler, directory="../")
+
+    with socketserver.TCPServer(("", PORT), handler) as httpd:
+        print(f"Serving ../ at http://localhost:{PORT}")
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            pass
+        finally:
+            print("Server stopped.")
 
 class MainWindow(QWidget):
     def __init__(self, object_title:str):
@@ -296,6 +315,16 @@ class MainWindow(QWidget):
 
 
 if __name__ == "__main__":
+
+    print("Init server...")
+
+    # Start HTTP server in background
+    server_thread = threading.Thread(target=start_server, daemon=True)
+    server_thread.start()
+
+    time.sleep(3)
+    print()
+    print("Should be ready!")
 
     new_or_old = '.'
 
