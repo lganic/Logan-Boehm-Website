@@ -93,6 +93,7 @@ async function loadProject() {
         console.error("Error loading the project JSON file:", error);
     }
 
+    MathJax.typeset(); // Format all the latex
     adjustImageHeight();
 }
 
